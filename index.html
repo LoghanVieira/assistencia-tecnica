@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistência Técnica de Computadores v2.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a56db;
+            --secondary-color: #e0e7ff;
+            --bg-color: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
+            --whatsapp: #25d366;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
+
+        /* Hero */
+        .hero { display: flex; align-items: center; justify-content: space-between; gap: 40px; padding-top: 60px; padding-bottom: 60px; }
+        .hero-text h1 { font-size: 3.5rem; font-weight: 800; color: var(--primary-color); margin-bottom: 20px; line-height: 1.1; letter-spacing: -1px; }
+        .hero-text p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 30px; max-width: 600px; }
+        .mascot-container { flex-shrink: 0; width: 100%; max-width: 380px; text-align: right; }
+        .mascot-img { max-width: 100%; width: 100%; animation: float 4s ease-in-out infinite; filter: drop-shadow(0 15px 25px rgba(26, 86, 219, 0.15)); }
+        
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
+
+        /* Botões */
+        .btn { display: inline-flex; align-items: center; padding: 16px 36px; border-radius: 12px; font-weight: 700; font-size: 1.1rem; transition: all 0.3s ease; text-decoration: none; }
+        .btn-whatsapp { background-color: var(--whatsapp); color: white; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3); }
+        .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+
+        /* Títulos de Seção */
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--text-main); font-weight: 800; letter-spacing: -0.5px; }
+
+        /* Como Funciona */
+        .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: center; }
+        .step-card { background: var(--card-bg); padding: 40px 30px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .step-number { background: var(--secondary-color); color: var(--primary-color); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; margin: 0 auto 20px; }
+        .step-card h3 { margin-bottom: 15px; font-size: 1.3rem; }
+        .step-card p { color: var(--text-muted); font-size: 1rem; }
+
+        /* Pacotes */
+        .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        .package-card { background: var(--card-bg); padding: 50px 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 2px solid #e2e8f0; position: relative; display: flex; flex-direction: column; }
+        .package-card:hover { border-color: var(--primary-color); transform: translateY(-5px); transition: all 0.3s ease; }
+        .package-card h3 { font-size: 1.8rem; margin-bottom: 15px; color: var(--text-main); }
+        .package-subtext { color: var(--text-muted); margin-bottom: 30px; min-height: 50px; }
+        .price { font-size: 3rem; font-weight: 800; color: var(--primary-color); margin-bottom: 30px; }
+        .services-list { list-style: none; margin-bottom: 40px; flex-grow: 1; }
+        .services-list li { margin-bottom: 15px; color: var(--text-muted); display: flex; align-items: flex-start; }
+        .services-list li::before { content: '✓'; color: var(--primary-color); font-weight: 800; margin-right: 12px; font-size: 1.2rem; }
+        .popular-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary-color); color: white; padding: 6px 20px; border-radius: 20px; font-size: 0.9rem; font-weight: 700; }
+
+        /* Sobre e Confiança */
+        .about-section { background: var(--card-bg); padding: 60px; border-radius: 24px; margin: 80px 0; border: 1px solid #e2e8f0; display: flex; align-items: center; gap: 40px; }
+        .about-content h2 { font-size: 2.2rem; margin-bottom: 20px; }
+        .about-content p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 15px; }
+
+        /* FAQ */
+        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .faq-item { background: var(--card-bg); padding: 30px; border-radius: 16px; border: 1px solid #e2e8f0; }
+        .faq-item h4 { font-size: 1.2rem; margin-bottom: 10px; color: var(--text-main); }
+        .faq-item p { color: var(--text-muted); }
+
+        /* Footer */
+        footer { background: #0f172a; color: white; padding: 60px 0 30px; text-align: center; margin-top: 80px; }
+        .footer-content h2 { margin-bottom: 20px; font-size: 2rem; }
+        .footer-bottom { margin-top: 60px; padding-top: 30px; border-top: 1px solid #334155; color: #94a3b8; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column-reverse; text-align: center; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .mascot-container { margin: 0 auto; }
+            .steps-grid, .faq-grid { grid-template-columns: 1fr; }
+            .about-section { flex-direction: column; padding: 30px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <header class="hero">
+            <div class="hero-text">
+                <h1>Seu Computador Rápido de Novo, Sem Dor de Cabeça</h1>
+                <p>Nossos especialistas cuidam de tudo. Escolha o atendimento presencial para uma limpeza completa ou o remoto para soluções rápidas via internet.</p>
+                <a href="https://wa.me/5517988380570" target="_blank" class="btn btn-whatsapp">Agendar Manutenção</a>
+            </div>
+            <div class="mascot-container">
+                <img src="mascote.png" alt="Mascote Computador" class="mascot-img">
+            </div>
+        </header>
+    </div>
+
+    <section style="background-color: var(--card-bg);">
+        <div class="container">
+            <h2 class="section-title">Como Funciona?</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Faça o Contato</h3>
+                    <p>Mande uma mensagem no WhatsApp relatando o problema ou lentidão da sua máquina.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Escolha o Formato</h3>
+                    <p>Avaliamos se o seu caso precisa de uma limpeza física presencial ou apenas suporte remoto.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Máquina Nova</h3>
+                    <p>Realizamos a formatação com backup seguro. Seu PC volta limpo, atualizado e voando.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="servicos">
+        <h2 class="section-title">Escolha o Melhor Pacote</h2>
+        <div class="packages-grid">
+            
+            <div class="package-card" style="border-color: var(--primary-color);">
+                <div class="popular-badge">Mais Escolhido</div>
+                <h3>Presencial Completo</h3>
+                <p class="package-subtext">Ideal para PCs e Notebooks que estão sujos, esquentando muito e lentos.</p>
+                <div class="price">R$ 200</div>
+                <ul class="services-list">
+                    <li><strong>Limpeza Física Completa (Poeira)</strong></li>
+                    <li>Formatação Limpa de Sistema</li>
+                    <li>Backup Seguro dos Seus Arquivos</li>
+                    <li>Instalação do Windows Atualizado</li>
+                    <li>Programas Essenciais (Office, PDF)</li>
+                </ul>
+                <a href="https://wa.me/5517988380570?text=Quero%20agendar%20o%20pacote%20Presencial" target="_blank" class="btn" style="background: var(--primary-color); color: white; width: 100%; justify-content: center;">Quero este</a>
+            </div>
+
+            <div class="package-card">
+                <h3>Suporte Remoto</h3>
+                <p class="package-subtext">Perfeito para quem precisa de velocidade e tem uma boa conexão de internet.</p>
+                <div class="price">R$ 100</div>
+                <ul class="services-list">
+                    <li>Atendimento no Conforto de Casa</li>
+                    <li>Formatação Assistida via Software</li>
+                    <li>Backup Seguro na Nuvem/HD</li>
+                    <li>Otimização de Desempenho</li>
+                    <li>Instalação de Programas Essenciais</li>
+                </ul>
+                <a href="https://wa.me/5517988380570?text=Quero%20agendar%20o%20pacote%20Remoto" target="_blank" class="btn" style="background: var(--secondary-color); color: var(--primary-color); width: 100%; justify-content: center;">Quero este</a>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="about-section">
+            <div class="about-content">
+                <h2>Garantia de Profissionalismo</h2>
+                <p>Muitas pessoas têm medo de deixar seu equipamento e dados pessoais nas mãos de curiosos. Aqui, você conta com um serviço realizado por um profissional com formação superior em <strong>Gestão de Tecnologia da Informação</strong>.</p>
+                <p>Isso significa que aplicamos processos corretos de backup, respeitamos a privacidade dos seus arquivos e garantimos que o hardware seja tratado com as melhores práticas do mercado.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="container">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h4>Vocês fazem manutenção em PC Gamer?</h4>
+                <p>Sim! Sabemos o quanto o superaquecimento atrapalha na hora de rodar jogos pesados como GTA V ou simuladores de corrida. A limpeza física é fundamental para recuperar o FPS e proteger as peças.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Vou perder minhas fotos e documentos?</h4>
+                <p>De jeito nenhum. Ambos os nossos pacotes (Presencial e Remoto) incluem um serviço de Backup Seguro antes da formatação.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Como funciona a formatação remota?</h4>
+                <p>Nós conectamos na sua máquina via internet de forma segura, fazemos o backup dos dados e preparamos a instalação de uma nova versão do sistema. Requer que o PC esteja ligando e com internet.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Quais os meios de pagamento?</h4>
+                <p>Aceitamos Pix, Cartão de Crédito e Dinheiro. O pagamento é realizado apenas após a conclusão e validação do serviço.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h2>Pronto para destravar seu PC?</h2>
+                <a href="https://wa.me/5517988380570" target="_blank" class="btn btn-whatsapp" style="margin-top: 20px;">Falar no WhatsApp (17) 98838-0570</a>
+            </div>
+            <div class="footer-bottom">
+                <p>Atendimento presencial focado na região de Mirassol e arredores. Suporte remoto para todo o Brasil.</p>
+                <p style="margin-top: 10px;">&copy; 2024 Assistência Técnica. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
